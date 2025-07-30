@@ -12,8 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          projectKey: Horilla_Demo            # Add your real project key here
+          organization: https://sonarcloud.io/project/overview?id=Rohith1909_Horilla_Demo                      # Add your Sonar organization key here
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
