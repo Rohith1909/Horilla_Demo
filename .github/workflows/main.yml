@@ -1,10 +1,12 @@
 name: Build
+
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   sonarqube:
     name: SonarQube
@@ -13,10 +15,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         with:
-          projectKey: Horilla_Demo            # Add your real project key here
-          organization: https://sonarcloud.io/project/overview?id=Rohith1909_Horilla_Demo                      # Add your Sonar organization key here
+          args: >
+            -Dsonar.projectKey=Horilla_Demo
+            -Dsonar.organization=Rohith1909
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.sources=.
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
