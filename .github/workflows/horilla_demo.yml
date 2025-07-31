@@ -34,7 +34,7 @@ jobs:
        with:
          projectBaseDir: .
          args: >
-           -Dsonar.projectKey=Horilla-Demo
+           -Dsonar.projectKey=Horilla-Server
            -Dsonar.python.version=3.11
        env:
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
